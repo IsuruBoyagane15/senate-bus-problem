@@ -1,7 +1,8 @@
 import java.util.concurrent.Semaphore;
 
 /**
- * Class for the bus threads
+ * Class of buses
+ *
  */
 public class Bus implements Runnable {
 

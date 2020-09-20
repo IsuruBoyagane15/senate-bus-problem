@@ -1,5 +1,6 @@
 /**
- * Class to spawn the threads for the bus arrival
+ * Sub class to spawn the bus threads
+ *
  */
 public class BusGenerator extends Generator implements Runnable {
 

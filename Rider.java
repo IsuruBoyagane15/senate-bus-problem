@@ -1,7 +1,8 @@
 import java.util.concurrent.Semaphore;
 
 /**
- * Class for the rider threads
+ * Class of riders
+ *
  */
 class Rider implements Runnable {
 

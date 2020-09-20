@@ -1,5 +1,6 @@
 /**
- * Class to spawn the threads for the riders arrival
+ * Class to spawn the rider thread
+ *
  */
 public class RiderGenerator extends Generator implements Runnable {
 

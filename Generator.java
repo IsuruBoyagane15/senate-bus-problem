@@ -1,5 +1,9 @@
 import java.util.Random;
 
+/**
+ * Super class of thread generators
+ *
+ */
 public class Generator {
 
     private static final Random RANDOM =  new Random();
