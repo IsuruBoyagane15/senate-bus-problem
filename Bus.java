@@ -52,11 +52,11 @@ public class Bus implements Runnable {
     }
 
     public void depart() {
-        System.out.println("---- Bus id : " + index + " departed");
+        System.out.println("<<<<<     Bus id : " + index + " departed     >>>>>\n");
     }
 
     public void arrived() {
-        System.out.println("---- Bus id : " + index + " arrived");
-        System.out.println("---- Waiting rider count is : " + busStop.getRidersCount());
+        System.out.println("\n<<<<<     Bus id : " + index + " arrived     >>>>>");
+        System.out.println("<<<<<     Waiting rider count is : " + busStop.getRidersCount() + "     >>>>>");
     }
 }
