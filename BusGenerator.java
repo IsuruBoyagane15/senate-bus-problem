@@ -4,11 +4,11 @@
  */
 public class BusGenerator extends Generator implements Runnable {
 
-    private final float meanArivalTime;
+    private final float busArrivalMeanTime;
     private final BusStop busStop;
 
-    public BusGenerator(float meanArivalTime, BusStop busStop) {
-        this.meanArivalTime = meanArivalTime;
+    public BusGenerator(float busArrivalMeanTime, BusStop busStop) {
+        this.busArrivalMeanTime = busArrivalMeanTime;
         this.busStop = busStop;
     }
 
@@ -28,7 +28,7 @@ public class BusGenerator extends Generator implements Runnable {
 
                 busCount++;
                 // Sleeping the thread to obtain the inter arrival time between the bus threads
-                Thread.sleep(getWaitingTime(meanArivalTime));
+                Thread.sleep(getWaitingTime(busArrivalMeanTime));
 
             } catch (InterruptedException e) {
                 e.printStackTrace();

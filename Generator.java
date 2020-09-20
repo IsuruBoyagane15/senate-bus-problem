@@ -8,8 +8,8 @@ public class Generator {
 
     private static final Random RANDOM =  new Random();
 
-    public long getWaitingTime(float meanArivalTime){
-        float lambda = 1 / meanArivalTime;
+    public long getWaitingTime(float arrivalMeanTime){
+        float lambda = 1 / arrivalMeanTime;
         return Math.round(-Math.log(1 - RANDOM.nextFloat()) / lambda);
     }
 }

@@ -6,16 +6,16 @@ import java.util.concurrent.Semaphore;
  */
 class Rider implements Runnable {
 
-    private final int count;
+    private final int riderId;
     private final BusStop busStop;
     private final Semaphore waitingAreaEntranceSemaphore;
     private final Semaphore boardingSemaphore;
     private final Semaphore busDepartureSemaphore;
     private final Semaphore mutex_rider_bus;
 
-    public Rider(Semaphore waitingAreaEntranceSemaphore, Semaphore boardingSemaphore, Semaphore busDepartureSemaphore, Semaphore mutex, int count, BusStop busStop) {
+    public Rider(Semaphore waitingAreaEntranceSemaphore, Semaphore boardingSemaphore, Semaphore busDepartureSemaphore, Semaphore mutex, int riderId, BusStop busStop) {
         //rider id 
-        this.count = count; 
+        this.riderId = riderId;
 
         //bus stop area
         this.busStop = busStop;
@@ -81,10 +81,10 @@ class Rider implements Runnable {
     }
 
     public void boardBus() {
-        System.out.println("Rider id :" + count + " boarded");
+        System.out.println("Rider id :" + riderId + " boarded.");
     }
 
     public void enterBoardingArea() {
-        System.out.println("Rider id :" + count + " entered boarding area");
+        System.out.println("Rider id :" + riderId + " entered boarding area.");
     }
 }

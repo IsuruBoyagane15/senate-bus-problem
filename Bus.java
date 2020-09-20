@@ -6,7 +6,7 @@ import java.util.concurrent.Semaphore;
  */
 public class Bus implements Runnable {
 
-    private final int index;
+    private final int busId;
     private final BusStop busStop;
     private final Semaphore riderBoardingSemaphore;
     private final Semaphore busDepartureSemaphore;
@@ -14,7 +14,7 @@ public class Bus implements Runnable {
 
 
     public Bus(Semaphore riderBoardingSemaphore, Semaphore busDepartureSemaphore, Semaphore mutex, int index, BusStop busStop) {
-        this.index = index;
+        this.busId = index;
         this.busStop = busStop;
         this.riderBoardingSemaphore = riderBoardingSemaphore;
         this.busDepartureSemaphore = busDepartureSemaphore;
@@ -53,11 +53,11 @@ public class Bus implements Runnable {
     }
 
     public void depart() {
-        System.out.println("<<<<<     Bus id : " + index + " departed     >>>>>\n");
+        System.out.println("<<<<<     Bus id : " + busId + " departed     >>>>>\n");
     }
 
     public void arrived() {
-        System.out.println("\n<<<<<     Bus id : " + index + " arrived     >>>>>");
+        System.out.println("\n<<<<<     Bus id : " + busId + " arrived     >>>>>");
         System.out.println("<<<<<     Waiting rider count is : " + busStop.getRidersCount() + "     >>>>>");
     }
 }
