@@ -9,7 +9,7 @@ public class Bus implements Runnable {
     private final BusStop busStop;
     private final Semaphore riderBoardingSemaphore;
     private final Semaphore busDepartureSemaphore;
-    private final Semaphore mutex;
+    private final Semaphore mutex_rider_bus;
 
 
     public Bus(Semaphore riderBoardingSemaphore, Semaphore busDepartureSemaphore, Semaphore mutex, int index, BusStop busStop) {
@@ -17,26 +17,32 @@ public class Bus implements Runnable {
         this.busStop = busStop;
         this.riderBoardingSemaphore = riderBoardingSemaphore;
         this.busDepartureSemaphore = busDepartureSemaphore;
-        this.mutex = mutex;
+        this.mutex_rider_bus = mutex;
     }
 
     @Override
     public void run() {
 
         try {
-            mutex.acquire();
-                // Arrival of the bus
+            // Bus acquires the mutex stopping any more rider acquiring the mutex
+            mutex_rider_bus.acquire();
+                // Bus arrives
                 arrived();
 
-                // Checking if there are waiting riders
+                // Checking if any riders are waiting in the bus stop
                 if (busStop.getRidersCount() > 0) {
 
-                    // Releasing the rider boarding semaphore allowing a rider to get into the bus
+                    /* Releasing the rider boarding semaphore allowing a rider to get into the bus. 
+                    Similar to opening the door for a rider to enter one by one 
+                    */
                     riderBoardingSemaphore.release();
-                    // Acquiring the bus depaarture semaphore to wait the bus until the riders get boarded
+                    /* Acquiring the bus depaarture semaphore to wait the bus until the riders get boarded
+                    The final rider to board signals the bus to depart by releasing this semaphore
+                    */
                     busDepartureSemaphore.acquire();
                 }
-            mutex.release();
+            // bus releases the mutex for other riders to enter the waiting area or for another bus 
+            mutex_rider_bus.release();
 
             // Depart the bus
             depart();
@@ -46,11 +52,11 @@ public class Bus implements Runnable {
     }
 
     public void depart() {
-        System.out.println("---- Bus : " + index + " departed");
+        System.out.println("---- Bus id : " + index + " departed");
     }
 
     public void arrived() {
-        System.out.println("---- Bus : " + index + " arrived");
-        System.out.println("---- Waiting rider count : " + busStop.getRidersCount());
+        System.out.println("---- Bus id : " + index + " arrived");
+        System.out.println("---- Waiting rider count is : " + busStop.getRidersCount());
     }
 }
