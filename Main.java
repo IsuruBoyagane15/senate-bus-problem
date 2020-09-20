@@ -8,8 +8,8 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        float meanRiderArivalTime = Float.parseFloat(args[0]) * 10;
-        float meanBusArivalTime = Float.parseFloat(args[1]) * 60 * 10;
+        float meanRiderArivalTime = Float.parseFloat(args[0]) * 1000;
+        float meanBusArivalTime = Float.parseFloat(args[1]) * 60 * 1000;
         
 //        Scanner scanner = new Scanner(System.in);
 //        String userInput;
