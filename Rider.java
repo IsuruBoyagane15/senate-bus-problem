@@ -11,7 +11,6 @@ class Rider implements Runnable {
     private final Semaphore boardingSemaphore;
     private final Semaphore busDepartureSemaphore;
     private final Semaphore mutex_rider_bus;
-    ;
 
     public Rider(Semaphore waitingAreaEntranceSemaphore, Semaphore boardingSemaphore, Semaphore busDepartureSemaphore, Semaphore mutex, int count, BusStop busStop) {
         //rider id 

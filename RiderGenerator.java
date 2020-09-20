@@ -1,5 +1,3 @@
-import java.util.Random;
-
 /**
  * Class to spawn the threads for the riders arrival
  */
@@ -7,12 +5,10 @@ public class RiderGenerator extends Generator implements Runnable {
 
     private final float meanArivalTime;
     private final BusStop busStop;
-//    private static Random RANDOM =  new Random();
 
     public RiderGenerator(float arrivalMeanTime, BusStop waitingArea) {
         this.meanArivalTime = arrivalMeanTime;
         this.busStop = waitingArea;
-//        RANDOM = new Random();
     }
 
     @Override
@@ -25,7 +21,6 @@ public class RiderGenerator extends Generator implements Runnable {
             try {
                 // Initializing and starting the rider threads
                 Rider rider = new Rider(busStop.getWaitingAreaEntranceSemaphore(), busStop.getBoardingAreaEntranceSemaphore(), busStop.getBusDepartureSemaphore(), busStop.getMutex(), riderCount, busStop);
-//                (new Thread(rider)).start();
                 Thread riderThread = new Thread(rider);
                 riderThread.start();
 
@@ -38,9 +33,4 @@ public class RiderGenerator extends Generator implements Runnable {
             }
         }
     }
-
-//    public long getRiderWaitingTime() {
-//        float lambda = 1 / meanArivalTime;
-//        return Math.round(-Math.log(1 - RANDOM.nextFloat()) / lambda);
-//    }
 }
